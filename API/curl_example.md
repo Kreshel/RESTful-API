@@ -1,7 +1,9 @@
 
 An example of how to use this API from the command line.
 
+
 	%curl "http://localhost:5000/rainfall"
+
 	    [
 		  {
 		    "Annual rainfall at fortaleza": 852.0, 
