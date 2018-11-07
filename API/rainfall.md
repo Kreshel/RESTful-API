@@ -29,7 +29,7 @@ This endpoint retrieves all available data for rainfall in Fortaleza, Brazil.
 
 
 #Query Parameters#
-Start/end may be used together and limit/offset may be used together, but cross combinations not allowed.
+Start/end may be used together and limit/offset may be used together, but cross combinations are not allowed.
 
 	start: integer, optional
 		Retrieves data points starting at 'start' year
