@@ -3,6 +3,7 @@ This endpoint retrieves all available data for rainfall in Fortaleza, Brazil.
 
 
 	GET /rainfall
+	
 	    [
 		  {
 		    "Annual rainfall at fortaleza": 852.0, 
