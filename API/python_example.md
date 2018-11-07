@@ -4,7 +4,8 @@ An example of how to use this API from Python.
 
 	import requests
 	r = requests.get(url='http://localhost:5000/rainfall')
-	data = r.json()
+	assert r.status_code == 200
+	return r.content
 
 	    [
 		  {
