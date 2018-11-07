@@ -1,3 +1,5 @@
+# GET /rainfall #
+
 
 This endpoint retrieves all available data for rainfall in Fortaleza, Brazil.
 

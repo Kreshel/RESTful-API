@@ -1,3 +1,4 @@
+# GET /rainfall/<id_num> #
 
 This endpoint retrieves the rainfall data for index 'idnum'.
 

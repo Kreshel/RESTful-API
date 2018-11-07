@@ -1,3 +1,5 @@
+# GET rainfall/year/<year_num> #
+
 
 This endpoint returns the rainfall data for year 'yearnum'.
 
