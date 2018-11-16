@@ -8,14 +8,14 @@ Created and maintained by Kreshel Nguyen.
 
 
 
-### Get Started ###
+# Get Started
 
 %docker pull kreshel/flask_api
 
 %docker-compose up
 
 
-# Curl Example #
+### Curl Example
 
 
 An example of how to use this API from the command line.
@@ -45,7 +45,7 @@ An example of how to use this API from the command line.
 		]
 
 
-# Python Example #
+### Python Example
 
 
 An example of how to use this API from Python.
@@ -79,9 +79,9 @@ An example of how to use this API from Python.
 
 
 
-### Documentation ###
-## Retrieving Rainfall Data ##
-# GET /rainfall #
+# Documentation
+## Retrieving Rainfall Data
+### GET /rainfall
 
 
 This endpoint retrieves all available data for rainfall in Fortaleza, Brazil.
@@ -139,7 +139,7 @@ Start/end may be used together and limit/offset may be used together, but cross 
 		]
 
 
-# GET /rainfall/<id_num> #
+### GET /rainfall/<id_num>
 
 This endpoint retrieves the rainfall data for index 'idnum'.
 
@@ -152,7 +152,7 @@ This endpoint retrieves the rainfall data for index 'idnum'.
 		}
 
 
-# GET rainfall/year/<year_num> #
+### GET rainfall/year/<year_num>
 
 
 This endpoint returns the rainfall data for year 'yearnum'.
@@ -166,8 +166,8 @@ This endpoint returns the rainfall data for year 'yearnum'.
 		}
 
 
-## Retrieving Jobs/Plots ##
-# GET jobs #
+## Retrieving Jobs/Plots
+### GET jobs
 
 This endpoint allows the client to retrieve all available jobs.
 
@@ -175,7 +175,7 @@ This endpoint allows the client to retrieve all available jobs.
 	{
 	}
 
-# GET jobs/<job_id> #
+### GET jobs/<job_id>
 
 This endpoint allows the client to retrieve the status on a job by id.
 
@@ -184,7 +184,7 @@ This endpoint allows the client to retrieve the status on a job by id.
 		}
 
 
-# POST jobs #
+### POST jobs
 
 This endpoint allows the client to post a job request.
 
