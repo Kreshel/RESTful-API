@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    image: kreshel/flask_api:v2
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+  redis:
+    image: redis
