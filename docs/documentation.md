@@ -134,7 +134,7 @@ Start/end may be used together and limit/offset may be used together, but cross 
 		Retrieves data points starting at index 'offset'
 
 
-	GET /rainfall?limit=2&offset=3
+GET /rainfall?limit=2&offset=3
 
 		[
 		  {
