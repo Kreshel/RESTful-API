@@ -84,7 +84,7 @@ def add_job(start=1850, end=1979, status='submitted'):
 
 # updates job in redis with new status
 def update_job_status(jid, status):
-	job_dict = get_job_by_id(jid)
+	job_dict = get_job_by_jid(jid)
 	if job_dict:
 		job_dict['status'] = status
 		rd.hmset(_create_job_key(jid), job_dict)
@@ -92,7 +92,7 @@ def update_job_status(jid, status):
 		raise Exception()
 
 # deletes a job off of redis queue
-def delete_by_id(jid):
+def delete_by_jid(jid):
 	rd.delete(_create_job_key(jid))
 
 def queue_job(jid):
@@ -100,14 +100,14 @@ def queue_job(jid):
 
 def finalize_job(jid, file_path):
 	"""Update the job in the db with status and plot once worker has completed it."""
-	job = get_job_by_id(jid)
+	job = get_job_by_jid(jid)
 	job['status'] = 'completed'
 	job['plot'] = open(file_path, 'rb').read()
 	rd.hmset(jid, job)
 
 def get_job_plot(jid):
 	"""Returns the plot, as binary data, associated with the job"""
-	job_dict = get_job_by_id(jid)
+	job_dict = get_job_by_jid(jid)
 	if not job_dict['status'] == 'completed':
 		return "job not complete."
 	return rd.hmget(jid, 'plot')

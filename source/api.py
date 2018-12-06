@@ -159,16 +159,16 @@ def jobs_api():
 		return json.dumps(data)
 
 @app.route('/jobs/<jid>', methods=['GET','DELETE'])
-def get_job_by_id(jid=None):
+def get_job_by_jid(jid=None):
 
 	if request.method == 'GET':
 		try:
-			return json.dumps(jobs.get_job_by_id(jid))
+			return json.dumps(jobs.get_job_by_jid(jid))
 		except:
 			return jsonify({'msg':'Job does not exist'}), 400
 	
 	if request.method == 'DELETE':
-		jobs.delete_by_id(jid)
+		jobs.delete_by_jid(jid)
 
 		return json.dumps({'msg':'Job {} successfully deleted'}, jid), 400
 
