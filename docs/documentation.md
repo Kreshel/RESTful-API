@@ -4,7 +4,7 @@
 An example of how to use this API from the command line.
 
 
-	%curl -X <METHOD> [--data '{start: 1850, end: 1979}'] "http://localhost:5000/rainfall"
+	%curl -X <METHOD> [--data '{"start":"1850","end":"1979"}'] "http://localhost:5000/rainfall"
 	Insert appropriate METHOD (GET, POST, DELETE). Use the brackets with POST requests, otherwise ignore
 
 	    [
@@ -157,6 +157,25 @@ This endpoint allows the client to retrieve all available jobs.
 
 	GET /jobs
 	{
+		[
+			{
+				"id": "5b6a0b60-13b7-426a-997b-b0330ee4c961", 
+				"status": "in_progress", 
+				"start": "1880", 
+				"end": "1900", 
+				"plot": "NULL"
+			}
+			.
+			.
+			.
+			{
+				"id": "cbaa1e0d-17c8-4ae8-a881-4bc356892f53", 
+				"status": "in_progress", 
+				"start": "1880", 
+				"end": "1950", 
+				"plot": "NULL"
+			}
+		]
 	}
 
 ### POST jobs
@@ -165,6 +184,11 @@ This endpoint allows the client to post a job request.
 
 	POST /jobs
 		{
+			"id": "25cdb58e-e802-489b-89e1-2cb7813dccd8", 
+			"status": "submitted", 
+			"start": 1880, 
+			"end": 1950, 
+			"plot": "NULL"}
 		}
 
 ### GET jobs/<job_id>
@@ -173,6 +197,11 @@ This endpoint allows the client to retrieve the status on a job by id.
 
 	GET /jobs/<job_id>
 		{
+			"id": "25cdb58e-e802-489b-89e1-2cb7813dccd8", 
+			"status": "in_progress", 
+			"start": "1880", 
+			"end": "1950", 
+			"plot": "NULL"
 		}
 
 ### DELETE jobs/<job_id>
@@ -181,6 +210,7 @@ This endpoint allows the client to delete a job by id.
 
 	DELETE /jobs/<job_id>
 		{
+			"msg": "Job 25cdb58e-e802-489b-89e1-2cb7813dccd8 successfully deleted"
 		}
 
 ### GET jobs/<job_id>/plot

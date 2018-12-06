@@ -186,7 +186,7 @@ def job_plot(job_id):
 		return json.dumps({'status': "Error", 'message': e})
 	'''
 
-	plot = db.get_job_plot(job_id)
+	plot = jobs.get_job_plot(job_id)
 	try:
 		return send_file(io.BytesIO(plot[0]),
 					mimetype='image/png',

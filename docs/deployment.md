@@ -31,10 +31,10 @@ Congratulations! The server is online and you can now make requests.
 ###Then build the necessary Docker image
 %docker build -t kreshel/flask_api .
 CONFIGURING IPsCONFIGURING IPsCONFIGURING IPsCONFIGURING IPsCONFIGURING IPsCONFIGURING IPs
-###Then run the API on one server
+###Then run the Flask API on one server
 %docker-compose-api up
 
-###Finally run the Jobs on another server
+###Finally run the redis app on another server
 %docker-compose-jobs up
 
 
