@@ -39,7 +39,7 @@ def _create_job_key(jid):
 	return 'job.{}'.format(jid)
 
 # creates a job dictionary object with metadata
-def _create_job(jid, status='not provided', start=1850, end=1979, plot=None):
+def _create_job(jid, status='NULL', start=1850, end=1979, plot='NULL'):
 	if type(jid) == str:
 		return {'id': jid,
 				'status': status,
