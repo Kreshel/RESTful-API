@@ -1,10 +1,3 @@
-# Get Started
-
-%docker pull kreshel/flask_api
-
-%docker-compose up
-
-
 ### Curl Example
 
 
@@ -165,6 +158,14 @@ This endpoint allows the client to retrieve all available jobs.
 	{
 	}
 
+### POST jobs
+
+This endpoint allows the client to post a job request.
+
+	POST /jobs
+		{
+		}
+
 ### GET jobs/<job_id>
 
 This endpoint allows the client to retrieve the status on a job by id.
@@ -173,11 +174,18 @@ This endpoint allows the client to retrieve the status on a job by id.
 		{
 		}
 
+### DELETE jobs/<job_id>
 
-### POST jobs
+This endpoint allows the client to delete a job by id.
 
-This endpoint allows the client to post a job request.
+	DELETE jobs/<job_id>
+		{
+		}
 
-	POST /jobs
+### GET jobs/<job_id>/plot
+
+This endpoint allows the client to retrieve a plot job.
+
+	GET jobs/<job_id>/plot
 		{
 		}

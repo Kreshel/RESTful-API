@@ -8,7 +8,7 @@ import os
 from data import get_data
 
 '''
-I wasn't exactly sure for some parts since I missed class 
+I wasn't exactly sure for parts since I missed class 
 so I drew some inspiration from Carrie's.
 Please look at previous iterations of this for original source code.
 '''
@@ -53,7 +53,7 @@ def _create_job(jid, status='NULL', start=1850, end=1979, plot='NULL'):
 			'end': end.decode('utf-8'),
 			'plot': plot.decode('utf-8')
 	}
-	
+
 # retrieves job using job key
 def _get_job_by_job_key(job_key):
 	jid, status, start, end, plot = rd.hmget(job_key, 'id', 'status', 'start', 'end', 'plot')
@@ -125,6 +125,8 @@ def execute_job(jid):
 	years = [int(p['Year']) for p in points]
 	rainfall = [p['Annual rainfall at fortaleza'] for p in points]
 	plt.scatter(years,rainfall)
+	# can add labels/etc.
+	# need to fix, it currently runs forever
 
 	tmp_file = '/tmp/{}.png'.format(jid)
 	plt.savefig(tmp_file, dpi=150)
