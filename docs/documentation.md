@@ -1,9 +1,10 @@
-### Curl Example
 
+# Accessing through Curl/Python
+## Curl Example
 
 An example of how to use this API from the command line.
 
-
+### GET/POST/DELETE rainfall/jobs
 	%curl -X <METHOD> [--data '{"start":"1850","end":"1979"}'] "http://localhost:5000/rainfall"
 	Insert appropriate METHOD (GET, POST, DELETE). Use the brackets with POST requests, otherwise ignore
 
@@ -28,9 +29,13 @@ An example of how to use this API from the command line.
 		  }
 		]
 
+### GET jobs/<job_id>/plot
+	%curl --output <file_name.png> localhost:5000/jobs/<jid>/plot
 
-### Python Example
+	Will download a plot image into working directory
 
+
+## Python Example
 
 An example of how to use this API from Python.
 

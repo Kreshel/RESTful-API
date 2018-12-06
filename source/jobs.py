@@ -110,8 +110,8 @@ def finalize_job(jid, file_path):
 	job['plot'] = open(file_path, 'rb').read()
 	rd.hmset(jid, job)
 
+# retrieves plot as binary data
 def get_job_plot(jid):
-	"""Returns the plot, as binary data, associated with the job"""
 	job_dict = get_job_by_jid(jid)
 	if not job_dict['status'] == 'completed':
 		return "job not complete."
