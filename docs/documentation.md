@@ -155,7 +155,7 @@ GET /rainfall?limit=2&offset=3
 This endpoint retrieves the rainfall data for index 'idnum'.
 
 
-	GET /rainfall/10
+GET /rainfall/10
 
 		{
 		  "Annual rainfall at fortaleza": 1114.0, 
@@ -170,7 +170,7 @@ This endpoint retrieves the rainfall data for index 'idnum'.
 This endpoint returns the rainfall data for year 'yearnum'.
 
 
-	GET /rainfall/year/1893
+GET /rainfall/year/1893
 
 		{
 		  "Annual rainfall at fortaleza": 1430.0, 
@@ -184,7 +184,7 @@ This endpoint returns the rainfall data for year 'yearnum'.
 
 This endpoint allows the client to retrieve all available jobs.
 
-	GET /jobs
+GET /jobs
 
 	{
 		[
@@ -212,7 +212,7 @@ This endpoint allows the client to retrieve all available jobs.
 
 This endpoint allows the client to post a job request.
 
-	POST /jobs
+POST /jobs
 
 		{
 			"id": "25cdb58e-e802-489b-89e1-2cb7813dccd8", 
@@ -226,7 +226,7 @@ This endpoint allows the client to post a job request.
 
 This endpoint allows the client to retrieve the status on a job by id.
 
-	GET /jobs/<job_id>
+GET /jobs/<job_id>
 
 		{
 			"id": "25cdb58e-e802-489b-89e1-2cb7813dccd8", 
@@ -240,7 +240,7 @@ This endpoint allows the client to retrieve the status on a job by id.
 
 This endpoint allows the client to delete a job by id.
 
-	DELETE /jobs/<job_id>
+DELETE /jobs/<job_id>
 
 		{
 			"msg": "Job 25cdb58e-e802-489b-89e1-2cb7813dccd8 successfully deleted"
