@@ -39,21 +39,20 @@ def _create_job_key(jid):
     return 'job.{}'.format(jid)
 
 # creates a job dictionary object with metadata
-def _create_job(jid, status, start=1850, end=1979, plot):
+def _create_job(jid, status, start, end, plot):
 	if type(jid) == str:
-		return {'id': jid, 
-			'status': status, 
-			'start': start, 
-			'end': end, 
-			'plot': plot
+		return {'id': jid,
+				'status': status,
+				'start': start,
+				'end': end,
+				'plot': plot
 		}
-    return {'id': jid.decode('utf-8'),
-    	'status': status.decode('utf-8'),
-    	'start': start.decode('utf-8'),
-    	'end': end.decode('utf-8'),
-    	'plot': plot.decode('utf-8')
-    }
-
+	return {'id': jid.decode('utf-8'),
+			'status': status.decode('utf-8'),
+			'start': start.decode('utf-8'),
+			'end': end.decode('utf-8'),
+			'plot': plot.decode('utf-8')
+	}
 # retrieves job using job key
 def _get_job_by_job_key(job_key):
 	jid, status, start, end, plot = rd.hmget(job_key, 'id', 'status', 'start', 'end', 'plot')
