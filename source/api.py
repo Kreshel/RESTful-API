@@ -158,6 +158,7 @@ def jobs_api():
 
 		return json.dumps(data)
 
+# Retrieves/deletes job from redis by jid
 @app.route('/jobs/<jid>', methods=['GET','DELETE'])
 def get_job_by_jid(jid=None):
 
@@ -173,9 +174,9 @@ def get_job_by_jid(jid=None):
 		return json.dumps({'msg':'Job {} successfully deleted'.format(jid)})
 
 
+# Returns a plot created by the worker 
 @app.route('/jobs/<job_id>/plot', methods=['GET'])
 def job_plot(job_id):
-	"""Returns the plot produced by a job as a binary png file attachment to the response."""
 	plot = jobs.get_job_plot(job_id)
 	try:
 		return json.dumps({'status': 'Success', 'message': plot})

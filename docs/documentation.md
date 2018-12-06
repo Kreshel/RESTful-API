@@ -4,7 +4,8 @@
 An example of how to use this API from the command line.
 
 
-	%curl "http://localhost:5000/rainfall"
+	%curl -X <METHOD> [--data '{start: 1850, end: 1979}'] "http://localhost:5000/rainfall"
+	Insert appropriate METHOD (GET, POST, DELETE). Use the brackets with POST requests, otherwise ignore
 
 	    [
 		  {
@@ -154,7 +155,7 @@ This endpoint returns the rainfall data for year 'yearnum'.
 
 This endpoint allows the client to retrieve all available jobs.
 
-	GET jobs/
+	GET /jobs
 	{
 	}
 
@@ -170,7 +171,7 @@ This endpoint allows the client to post a job request.
 
 This endpoint allows the client to retrieve the status on a job by id.
 
-	GET jobs/<job_id>
+	GET /jobs/<job_id>
 		{
 		}
 
@@ -178,7 +179,7 @@ This endpoint allows the client to retrieve the status on a job by id.
 
 This endpoint allows the client to delete a job by id.
 
-	DELETE jobs/<job_id>
+	DELETE /jobs/<job_id>
 		{
 		}
 
@@ -186,6 +187,6 @@ This endpoint allows the client to delete a job by id.
 
 This endpoint allows the client to retrieve a plot job.
 
-	GET jobs/<job_id>/plot
+	GET /jobs/<job_id>/plot
 		{
 		}

@@ -73,7 +73,7 @@ def get_all_jobs():
 
 	return job_objects
 
-# Adds a job to redis queue
+# Adds a job to redis db
 def add_job(start=1850, end=1979, status='submitted'):
 	jid = _create_jid()
 	job_dict = _create_job(jid, status, start, end)
@@ -92,7 +92,7 @@ def update_job_status(jid, status):
 	else:
 		raise Exception()
 
-# deletes a job off of redis queue
+# deletes a job off of redis db
 def delete_by_jid(jid):
 	rd.delete(_create_job_key(jid))
 
