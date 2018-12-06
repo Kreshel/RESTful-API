@@ -126,8 +126,9 @@ def execute_job(jid):
 	years = [int(p['Year']) for p in points]
 	rainfall = [p['Annual rainfall at fortaleza'] for p in points]
 	plt.scatter(years,rainfall)
-	# can add labels/etc.
-	# need to fix, it currently runs forever
+	plt.title(_create_job_key(jid))
+	plt.xlabel('Date')
+	plt.ylabel('Rainfall (mm)')
 
 	tmp_file = '/tmp/{}.png'.format(jid)
 	plt.savefig(tmp_file, dpi=150)

@@ -34,7 +34,7 @@ An example of how to use this API from the command line.
 
 An example of how to use this API from Python.
 
-
+### GET
 	import requests
 	r = requests.get(url='http://localhost:5000/rainfall')
 	assert r.status_code == 200
@@ -61,7 +61,29 @@ An example of how to use this API from Python.
 		  }
 		]
 
+### POST
+	import requests
+	r = requests.post(url='http://localhost:5000/jobs', data={"start":"1880","end":"1900"})
+	assert r.status_code == 200
+	return r.content
 
+		{
+			"id": "25cdb58e-e802-489b-89e1-2cb7813dccd8", 
+			"status": "submitted", 
+			"start": 1880, 
+			"end": 1900, 
+			"plot": "NULL"}
+		}
+
+### DELETE
+	import requests
+	r = requests.delete(url='http://localhost:5000/jobs/<jid>)
+	assert r.status_code == 200
+	return r.content
+
+		{
+			"msg": "Job 25cdb58e-e802-489b-89e1-2cb7813dccd8 successfully deleted"
+		}
 
 # Documentation
 ## Retrieving Rainfall Data
