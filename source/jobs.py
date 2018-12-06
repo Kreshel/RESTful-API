@@ -10,10 +10,10 @@ from data import get_data
 '''
 I wasn't exactly sure for parts since I missed class 
 so I drew some inspiration from Carrie's.
-Please look at previous iterations of this for original source code.
+Please look at previous iterations of this for "original" source code.
 '''
 
-#
+# Environment setup
 REDIS_IP = os.environ.get('REDIS_IP', '172.17.0.1')
 try:
 	REDIS_PORT = int(os.environ.get('REDIS_PORT'))
@@ -34,7 +34,7 @@ q = HotQueue("queue", host=REDIS_IP, port=REDIS_PORT, db=QUEUE_DB)
 def _create_jid():
 	return str(uuid4())
 
-# adds a 'job. in front of jid to use as a key
+# adds a 'job.' in front of jid to use as a key
 def _create_job_key(jid):
 	return 'job.{}'.format(jid)
 
@@ -57,6 +57,8 @@ def _create_job(jid, status='NULL', start=1850, end=1979, plot='NULL'):
 # retrieves job using job key
 def _get_job_by_job_key(job_key):
 	jid, status, start, end, plot = rd.hmget(job_key, 'id', 'status', 'start', 'end', 'plot')
+	if plot:
+		plot = 'True'
 	if jid:
 		return _create_job(jid, status, start, end, plot)
 	return None
@@ -99,8 +101,8 @@ def delete_by_jid(jid):
 def queue_job(jid):
 	q.put(jid)
 
+# puts the plot into redis db once it's completed
 def finalize_job(jid, file_path):
-	"""Update the job in the db with status and plot once worker has completed it."""
 	job = get_job_by_jid(jid)
 	job['status'] = 'completed'
 	job['plot'] = open(file_path, 'rb').read()
@@ -113,14 +115,9 @@ def get_job_plot(jid):
 		return "job not complete."
 	return rd.hmget(jid, 'plot')
 
-# Execute worker
+# job that the worker executes (creates plots)
 def execute_job(jid):
-	"""Execute the job. This is the callable that is queued and worked on asynchronously."""
 	job_dict = get_job_by_jid(jid)
-	#points = get_data(job['start'], job['end'])
-	#years = [int(p['year']) for p in points]
-	#population = [p['population'] for p in points]
-	#plt.scatter(years, population)
 
 	points = get_data()
 	points = points.in_between(start=int(job_dict['start']), end=int(job_dict['end'])).data
