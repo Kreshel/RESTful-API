@@ -115,7 +115,7 @@ def get_job_plot(jid):
 # Execute worker
 def execute_job(jid):
 	"""Execute the job. This is the callable that is queued and worked on asynchronously."""
-	job_dict = get_job_by_id(jid)
+	job_dict = get_job_by_jid(jid)
 	#points = get_data(job['start'], job['end'])
 	#years = [int(p['year']) for p in points]
 	#population = [p['population'] for p in points]
