@@ -1,6 +1,6 @@
 FROM python:3.6
 
-RUN pip install -r api/requirements.txt
+RUN pip install -r source/requirements.txt
 
 ADD ./source /source
 WORKDIR /source

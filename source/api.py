@@ -1,6 +1,6 @@
 from flask import Flask,jsonify,request
 import json
-import jobs
+#import jobs
 
 ### HW 1 ###
 class TimeSeriesDict:
@@ -51,7 +51,7 @@ class TimeSeriesDict:
 	def valid_offset(self):
 		return self.valOffset
 
-
+	# tests for correcct start/end
 	def in_between(self, start=None, end=None):
 		newTSD = TimeSeriesDict(self.file)
 		#columnTwoHeader = list(self.data[0])[1]
@@ -72,7 +72,7 @@ class TimeSeriesDict:
 
 		return newTSD
 
-
+	# tests for correct limit/offset
 	def limset(self, limit=None, offset=None):
 		newTSD = TimeSeriesDict(self.file)
 
@@ -151,9 +151,6 @@ def get_rainfall():
 		return jsonify(dict_class.limset(limit=limit,offset=offset).data)
 
 	return jsonify(dict_class.data)
-	# error stuff I used to check
-	return jsonify(request.args)
-	return str(type(request.args)) +'\n\n\n'
 
 
 @app.route('/rainfall/<idnum>', methods=['GET'])
@@ -172,7 +169,7 @@ def get_rainfall_by_id(idnum=None):
 
 
 @app.route('/rainfall/year/<yearnum>', methods=['GET'])
-def get_rainfall_byyear(yearnum=None):
+def get_rainfall_by_year(yearnum=None):
 
 	dict_class = get_data()
 
@@ -224,7 +221,7 @@ def jobs_api():
 				except:
 					return jsonify({'msg':'Please Enter a Valid End'}), 400
 
-			return json.dumps(jobs.add_job(start, end))
+			return True, json.dumps(jobs.add_job(start, end))
 
 		# if limit/offset provided, posts appropriate job
 		if 'limit' in job or 'offset' in rjob:
@@ -248,23 +245,31 @@ def jobs_api():
 				except:
 					return jsonify({'msg':'Please Enter a Valid Limit'}), 400
 
-			return json.dumps(jobs.add_job(start, end))
+			return True, json.dumps(jobs.add_job(start, end))
 
 		# makes job with all data if no parameters provided
 		return json.dumps(jobs.add_job())
+
 
 	if request.method == 'GET':
 		data = jobs.get_all_jobs()
 
 		return json.dumps(data)
 
-@app.route('/jobs/<jid>', methods=['GET'])
+@app.route('/jobs/<jid>', methods=['GET','DELETE'])
 def get_job_by_id(jid=None):
 
-	try:
-		return json.dumps(jobs.get_job_by_id(jid))
-	except:
-		return jsonify({'msg':'Job does not exist'}), 400
+	if request.method == 'GET':
+		try:
+			return json.dumps(jobs.get_job_by_id(jid))
+		except:
+			return jsonify({'msg':'Job does not exist'}), 400
+	
+	if request.method == 'DELETE':
+		jobs.delete_by_id(jid)
+
+		return json.dumps({'msg':'Job {} successfully deleted'}, jid), 400
+
 ############
 
 
