@@ -42,10 +42,10 @@ def _create_job_key(jid):
 def _create_job(jid, status, start, end, plot):
 	if type(jid) == str:
     return {'id': jid,
-                'status': status,
-                'start': start,
-                'end': end,
-                'plot': plot}
+            'status': status,
+            'start': start,
+            'end': end,
+            'plot': plot}
 
     return {'id': jid.decode('utf-8'),
             'status': status.decode('utf-8'),
