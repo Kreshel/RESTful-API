@@ -95,8 +95,6 @@ An example of how to use this API from Python.
 
 
 This endpoint retrieves all available data for rainfall in Fortaleza, Brazil.
-
-
 	GET /rainfall
 		[
 		  {
