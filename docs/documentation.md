@@ -248,9 +248,4 @@ DELETE /jobs/<job_id>
 
 ### GET jobs/<job_id>/plot
 
-This endpoint allows the client to retrieve a plot job.
-
-	GET /jobs/<job_id>/plot
-
-		{
-		}
+This endpoint allows the client to retrieve a plot job. Downloads the image in working directory. Reference Curl/Python examples.
