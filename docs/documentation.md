@@ -96,7 +96,7 @@ An example of how to use this API from Python.
 
 This endpoint retrieves all available data for rainfall in Fortaleza, Brazil.
 
-	GET /rainfall
+GET /rainfall
 
 		[
 		  {
@@ -251,6 +251,6 @@ This endpoint allows the client to delete a job by id.
 This endpoint allows the client to retrieve a plot job.
 
 	GET /jobs/<job_id>/plot
-	
+
 		{
 		}
