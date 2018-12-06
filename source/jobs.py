@@ -123,7 +123,7 @@ def execute_job(jid):
 	#plt.scatter(years, population)
 
 	points = get_data()
-	points = points.in_between(start=job_dict['start'], end=job_dict['end']).data
+	points = points.in_between(start=int(job_dict['start']), end=int(job_dict['end'])).data
 	years = [int(p['Year']) for p in points]
 	rainfall = [p['Annual rainfall at fortaleza'] for p in points]
 	plt.scatter(years,rainfall)
