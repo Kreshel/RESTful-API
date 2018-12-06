@@ -109,8 +109,8 @@ def get_job_plot(jid):
 	"""Returns the plot, as binary data, associated with the job"""
 	job_dict = get_job_by_id(jid)
 	if not job_dict['status'] == 'completed':
-		return True, "job not complete."
-	return False, rd.hmget(jid, 'plot')
+		return "job not complete."
+	return rd.hmget(jid, 'plot')
 
 # Execute worker
 def execute_job(jid):

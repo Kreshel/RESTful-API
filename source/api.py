@@ -101,7 +101,7 @@ def jobs_api():
 		try:
 			job = request.get_json(force=True)
 		except Exception as e:
-			return True, json.dumps({'status':'Error', 'message': 'Invalid JSON: {}.'.format(e)})
+			return json.dumps({'status':'Error', 'message': 'Invalid JSON: {}.'.format(e)})
 
 		# tests if both start/end and limit/offset used together
 		if ('start' in job or 'end' in job) and ('limit' in job or 'offset' in job):
@@ -123,7 +123,7 @@ def jobs_api():
 				except:
 					return jsonify({'msg':'Please Enter a Valid End'}), 400
 
-			return True, json.dumps(jobs.add_job(start, end))
+			return json.dumps(jobs.add_job(start, end))
 
 		# if limit/offset provided, posts appropriate job
 		if 'limit' in job or 'offset' in rjob:
@@ -147,7 +147,7 @@ def jobs_api():
 				except:
 					return jsonify({'msg':'Please Enter a Valid Limit'}), 400
 
-			return True, json.dumps(jobs.add_job(start, end))
+			return json.dumps(jobs.add_job(start, end))
 
 		# makes job with all data if no parameters provided
 		return json.dumps(jobs.add_job())
