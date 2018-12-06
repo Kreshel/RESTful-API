@@ -1,7 +1,6 @@
 
 # Accessing through Curl/Python
 ## Curl Example
-
 An example of how to use this API from the command line.
 
 ### GET/POST/DELETE rainfall/jobs
@@ -36,7 +35,6 @@ An example of how to use this API from the command line.
 
 
 ## Python Example
-
 An example of how to use this API from Python.
 
 ### GET
