@@ -170,7 +170,7 @@ def get_job_by_jid(jid=None):
 	if request.method == 'DELETE':
 		jobs.delete_by_jid(jid)
 
-		return json.dumps({'msg':'Job {} successfully deleted'}, jid), 400
+		return json.dumps({'msg':'Job {} successfully deleted'}, jid)
 
 
 @app.route('/jobs/<job_id>/plot', methods=['GET'])
