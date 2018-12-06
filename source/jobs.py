@@ -1,6 +1,6 @@
 from uuid import uuid4
 from redis import StrictRedis
-#from hotqueue import HotQueue
+from hotqueue import HotQueue
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
