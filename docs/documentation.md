@@ -4,8 +4,9 @@
 An example of how to use this API from the command line.
 
 ### GET/POST/DELETE rainfall/jobs
+Insert appropriate METHOD (GET, POST, DELETE). Use the brackets with POST requests, otherwise ignore
+
 	%curl -X <METHOD> [--data '{"start":"1850","end":"1979"}'] "http://localhost:5000/rainfall"
-	Insert appropriate METHOD (GET, POST, DELETE). Use the brackets with POST requests, otherwise ignore
 
 	    [
 		  {
@@ -29,9 +30,9 @@ An example of how to use this API from the command line.
 		]
 
 ### GET jobs/<job_id>/plot
-	%curl --output <file_name.png> localhost:5000/jobs/<jid>/plot
+Will download a plot image into working directory
 
-	Will download a plot image into working directory
+	%curl --output <file_name.png> localhost:5000/jobs/<jid>/plot
 
 
 ## Python Example
