@@ -1,7 +1,8 @@
-from flask import Flask,jsonify,request
+from flask import Flask,jsonify,request,send_file
 import json
 import jobs
 from data import get_data
+import io
 
 
 app = Flask(__name__)
@@ -177,9 +178,20 @@ def get_job_by_jid(jid=None):
 # Returns a plot created by the worker 
 @app.route('/jobs/<job_id>/plot', methods=['GET'])
 def job_plot(job_id):
+	'''
 	plot = jobs.get_job_plot(job_id)
 	try:
 		return json.dumps({'status': 'Success', 'message': plot})
+	except Exception as e:
+		return json.dumps({'status': "Error", 'message': e})
+	'''
+
+	plot = db.get_job_plot(job_id)
+	try:
+		return send_file(io.BytesIO(plot[0]),
+					mimetype='image/png',
+					as_attachment=True,
+					attachment_filename='{}.png'.format(job_id))
 	except Exception as e:
 		return json.dumps({'status': "Error", 'message': e})
 ############
