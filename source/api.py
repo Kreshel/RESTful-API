@@ -178,9 +178,9 @@ def job_plot(job_id):
 	"""Returns the plot produced by a job as a binary png file attachment to the response."""
 	plot = jobs.get_job_plot(job_id)
 	try:
-		return json.dumps({'status': 'Success', 'message': plot })
+		return json.dumps({'status': 'Success', 'message': plot})
 	except Exception as e:
-		return json.dumps({'status': "Error", 'message': e,})
+		return json.dumps({'status': "Error", 'message': e})
 ############
 
 

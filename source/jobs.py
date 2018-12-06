@@ -53,6 +53,7 @@ def _create_job(jid, status='NULL', start=1850, end=1979, plot='NULL'):
 			'end': end.decode('utf-8'),
 			'plot': plot.decode('utf-8')
 	}
+	
 # retrieves job using job key
 def _get_job_by_job_key(job_key):
 	jid, status, start, end, plot = rd.hmget(job_key, 'id', 'status', 'start', 'end', 'plot')
