@@ -95,7 +95,9 @@ An example of how to use this API from Python.
 
 
 This endpoint retrieves all available data for rainfall in Fortaleza, Brazil.
+
 	GET /rainfall
+
 		[
 		  {
 			"Annual rainfall at fortaleza": 852.0, 
@@ -133,6 +135,7 @@ Start/end may be used together and limit/offset may be used together, but cross 
 
 
 	GET /rainfall?limit=2&offset=3
+
 		[
 		  {
 			"Annual rainfall at fortaleza": 1233.0, 
@@ -153,6 +156,7 @@ This endpoint retrieves the rainfall data for index 'idnum'.
 
 
 	GET /rainfall/10
+
 		{
 		  "Annual rainfall at fortaleza": 1114.0, 
 		  "Year": 1950.0, 
@@ -167,6 +171,7 @@ This endpoint returns the rainfall data for year 'yearnum'.
 
 
 	GET /rainfall/year/1893
+
 		{
 		  "Annual rainfall at fortaleza": 1430.0, 
 		  "Year": 1893.0, 
@@ -180,6 +185,7 @@ This endpoint returns the rainfall data for year 'yearnum'.
 This endpoint allows the client to retrieve all available jobs.
 
 	GET /jobs
+
 	{
 		[
 			{
@@ -207,6 +213,7 @@ This endpoint allows the client to retrieve all available jobs.
 This endpoint allows the client to post a job request.
 
 	POST /jobs
+
 		{
 			"id": "25cdb58e-e802-489b-89e1-2cb7813dccd8", 
 			"status": "submitted", 
@@ -220,6 +227,7 @@ This endpoint allows the client to post a job request.
 This endpoint allows the client to retrieve the status on a job by id.
 
 	GET /jobs/<job_id>
+
 		{
 			"id": "25cdb58e-e802-489b-89e1-2cb7813dccd8", 
 			"status": "in_progress", 
@@ -233,6 +241,7 @@ This endpoint allows the client to retrieve the status on a job by id.
 This endpoint allows the client to delete a job by id.
 
 	DELETE /jobs/<job_id>
+
 		{
 			"msg": "Job 25cdb58e-e802-489b-89e1-2cb7813dccd8 successfully deleted"
 		}
@@ -242,5 +251,6 @@ This endpoint allows the client to delete a job by id.
 This endpoint allows the client to retrieve a plot job.
 
 	GET /jobs/<job_id>/plot
+	
 		{
 		}
