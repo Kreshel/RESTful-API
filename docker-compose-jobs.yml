@@ -1,6 +1,6 @@
-services:
-    app:
-        image: kreshel/flask_api
-        environment:
-            - 'REDIS_IP=172.17.0.1'
-            - 'REDIS_PORT=6379'
+jobs:
+  image: kreshel/flask_api
+    environment:
+      - 'REDIS_IP=172.17.0.1'
+      - 'REDIS_PORT=6379'
+  command: '"/source/jobs.py"'

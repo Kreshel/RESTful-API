@@ -8,24 +8,24 @@ Insert appropriate METHOD (GET, POST, DELETE). Use the brackets with POST reques
 
 	%curl -X <METHOD> [--data '{"start":"1850","end":"1979"}'] "http://localhost:5000/rainfall"
 
-	    [
+		[
 		  {
-		    "Annual rainfall at fortaleza": 852.0, 
-		    "Year": 1850.0, 
-		    "id": 0
+			"Annual rainfall at fortaleza": 852.0, 
+			"Year": 1850.0, 
+			"id": 0
 		  }, 
 		  {
-		    "Annual rainfall at fortaleza": 1806.0, 
-		    "Year": 1851.0, 
-		    "id": 1
+			"Annual rainfall at fortaleza": 1806.0, 
+			"Year": 1851.0, 
+			"id": 1
 		  }, 
 		  .
 		  .
 		  .
 		  {
-		    "Annual rainfall at fortaleza": 996.0, 
-		    "Year": 1979.0, 
-		    "id": 129
+			"Annual rainfall at fortaleza": 996.0, 
+			"Year": 1979.0, 
+			"id": 129
 		  }
 		]
 
@@ -44,24 +44,24 @@ An example of how to use this API from Python.
 	assert r.status_code == 200
 	return r.content
 
-	    [
+		[
 		  {
-		    "Annual rainfall at fortaleza": 852.0, 
-		    "Year": 1850.0, 
-		    "id": 0
+			"Annual rainfall at fortaleza": 852.0, 
+			"Year": 1850.0, 
+			"id": 0
 		  }, 
 		  {
-		    "Annual rainfall at fortaleza": 1806.0, 
-		    "Year": 1851.0, 
-		    "id": 1
+			"Annual rainfall at fortaleza": 1806.0, 
+			"Year": 1851.0, 
+			"id": 1
 		  }, 
 		  .
 		  .
 		  .
 		  {
-		    "Annual rainfall at fortaleza": 996.0, 
-		    "Year": 1979.0, 
-		    "id": 129
+			"Annual rainfall at fortaleza": 996.0, 
+			"Year": 1979.0, 
+			"id": 129
 		  }
 		]
 
@@ -100,22 +100,22 @@ This endpoint retrieves all available data for rainfall in Fortaleza, Brazil.
 	GET /rainfall
 		[
 		  {
-		    "Annual rainfall at fortaleza": 852.0, 
-		    "Year": 1850.0, 
-		    "id": 0
+			"Annual rainfall at fortaleza": 852.0, 
+			"Year": 1850.0, 
+			"id": 0
 		  }, 
 		  {
-		    "Annual rainfall at fortaleza": 1806.0, 
-		    "Year": 1851.0, 
-		    "id": 1
+			"Annual rainfall at fortaleza": 1806.0, 
+			"Year": 1851.0, 
+			"id": 1
 		  }, 
 		  .
 		  .
 		  .
 		  {
-		    "Annual rainfall at fortaleza": 996.0, 
-		    "Year": 1979.0, 
-		    "id": 129
+			"Annual rainfall at fortaleza": 996.0, 
+			"Year": 1979.0, 
+			"id": 129
 		  }
 		]
 
@@ -137,14 +137,14 @@ Start/end may be used together and limit/offset may be used together, but cross 
 	GET /rainfall?limit=2&offset=3
 		[
 		  {
-		    "Annual rainfall at fortaleza": 1233.0, 
-		    "Year": 1853.0, 
-		    "id": 3
+			"Annual rainfall at fortaleza": 1233.0, 
+			"Year": 1853.0, 
+			"id": 3
 		  }, 
 		  {
-		    "Annual rainfall at fortaleza": 1590.0, 
-		    "Year": 1854.0, 
-		    "id": 4
+			"Annual rainfall at fortaleza": 1590.0, 
+			"Year": 1854.0, 
+			"id": 4
 		  }
 		]
 
