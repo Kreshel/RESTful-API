@@ -41,9 +41,18 @@ def _create_job_key(jid):
 # creates a job dictionary object with metadata
 def _create_job(jid=None, status=None, start=1850, end=1979, plot=None):
 	if type(jid) == str:
-		return {'id': jid, 'status': status, 'start': start, 'end': end, 'plot': plot}
-
-    return {'id': jid.decode('utf-8'), 'status': status.decode('utf-8'), 'start': start.decode('utf-8'), 'end': end.decode('utf-8'), 'plot': plot.decode('utf-8')}
+		return {'id': jid, 
+				'status': status, 
+				'start': start, 
+				'end': end, 
+				'plot': plot
+		}
+    return {'id': jid.decode('utf-8'),
+    		'status': status.decode('utf-8'),
+    		'start': start.decode('utf-8'),
+    		'end': end.decode('utf-8'),
+    		'plot': plot.decode('utf-8')
+    }
 
 # retrieves job using job key
 def _get_job_by_job_key(job_key):
