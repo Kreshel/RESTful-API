@@ -4,13 +4,30 @@ from redis import StrictRedis
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
+import os
+from data import get_data
 
 '''
-I wasn't sure exactly how to implement code so I drew some inspiration from Carrie's
+I wasn't exactly sure for some parts since I missed class 
+so I drew some inspiration from Carrie's.
 Please look at previous iterations of this for original source code.
 '''
 
-rd = StrictRedis(host='172.17.0.1', port=6379, db=0)
+#
+REDIS_IP = os.environ.get('REDIS_IP', '172.17.0.1')
+try:
+    REDIS_PORT = int(os.environ.get('REDIS_PORT'))
+except:
+    REDIS_PORT = 6379
+
+# Redis DBs
+DATA_DB = 0
+QUEUE_DB = 1
+
+rd = StrictRedis(host=REDIS_IP, port=REDIS_PORT, db=DATA_DB)
+q = HotQueue("queue", host=REDIS_IP, port=REDIS_PORT, db=QUEUE_DB)
+
+#rd = StrictRedis(host='172.17.0.1', port=6379, db=0)
 #q = HotQueue("queue", host='172.17.0.1', port=6379, db=0)
 
 # creates a unique id for job
@@ -78,34 +95,36 @@ def update_job_status(jid, status):
 def delete_by_id(jid):
     rd.delete(_create_job_key(jid))
 
-
-# Queue --
-
 def queue_job(jid):
     q.put(jid)
 
 def finalize_job(jid, file_path):
     """Update the job in the db with status and plot once worker has completed it."""
     job = get_job_by_id(jid)
-    job['status'] = COMPLETE_STATUS
+    job['status'] = 'completed'
     job['plot'] = open(file_path, 'rb').read()
     rd.hmset(jid, job)
 
 def get_job_plot(jid):
     """Returns the plot, as binary data, associated with the job"""
-    job = get_job_by_id(jid)
-    if not job['status'] == COMPLETE_STATUS:
+    job_dict = get_job_by_id(jid)
+    if not job_dict['status'] == 'completed':
         return True, "job not complete."
     return False, rd.hmget(jid, 'plot')
 
 # Execute worker
 def execute_job(jid):
     """Execute the job. This is the callable that is queued and worked on asynchronously."""
-    job = get_job_by_id(jid)
-    points = get_data(job['start'], job['end'])
-    years = [int(p['year']) for p in points]
-    population = [p['population'] for p in points]
-    plt.scatter(years, population)
+    job_dict = get_job_by_id(jid)
+    #points = get_data(job['start'], job['end'])
+    #years = [int(p['year']) for p in points]
+    #population = [p['population'] for p in points]
+    #plt.scatter(years, population)
+    points = get_data(job_dict['start'], job['end'])
+    years = [int(p['Year']) for p in points]
+    rainfall = [p['Annual rainfall at fortaleza'] for p in points]
+    plt.scatter(years,rainfall)
+
     tmp_file = '/tmp/{}.png'.format(jid)
     plt.savefig(tmp_file, dpi=150)
     finalize_job(jid, tmp_file)
