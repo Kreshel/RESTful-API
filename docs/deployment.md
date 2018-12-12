@@ -35,7 +35,7 @@ Congratulations! The server is online and you can now make requests.
 %docker-compose -f docker-compose-api.yml up
 
 ###Finally run the redis app on another server
-%docker-compose-jobs -f docker-compose-jobs.yml up
+%docker-compose -f docker-compose-jobs.yml up
 
 
 Congratulations! You have the project online on multiple servers and can now make requests.
