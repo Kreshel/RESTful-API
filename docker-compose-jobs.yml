@@ -5,3 +5,5 @@ services:
       - 'REDIS_IP=172.17.0.1'
       - 'REDIS_PORT=6379'
     command: "/source/worker.py"
+    ports:
+      "6379:6379"
