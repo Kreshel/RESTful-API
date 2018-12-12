@@ -20,6 +20,7 @@ Congratulations! The server is online and you can now make requests.
 
 
 # Get Started on Different Servers
+Make sure port 6379 is clear.
 
 
 ###First clone the repository
