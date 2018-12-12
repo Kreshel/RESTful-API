@@ -2,3 +2,6 @@ api:
     image: kreshel/flask_api
     ports:
         - "5000:5000"
+    environment:
+      - 'REDIS_IP=172.17.0.1'
+      - 'REDIS_PORT=6379'
