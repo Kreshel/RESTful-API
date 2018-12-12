@@ -6,3 +6,6 @@ redis:
     image: redis:5.0.0
     ports:
         - "6379:6379"
+    environment:
+      - 'REDIS_IP=172.17.0.1'
+      - 'REDIS_PORT=6379'
